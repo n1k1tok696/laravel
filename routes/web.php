@@ -14,5 +14,15 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
+})->name('home');
+
+
+Route::get('/info', function () {
+    return view('info');
 });
+
+Route::get('/dashboard', "ControllerDash@getData")->name('getdata');
+
+Route::get('/login', "ControllerUser@login")->name('login')->middleware('guest');
+Route::post('/login', "ControllerUser@signin")->name('signin');
